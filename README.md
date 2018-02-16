@@ -29,8 +29,8 @@ Matlabtest(20)
 ## Vectors  
 
 ```matlab  
-v = \[1 2 3\] %you can also do v = \[1,2,3\]   
-w = \[4;5;6\] %using ; allows us to make column vectors  
+v = [1 2 3] %you can also do v = [1,2,3]   
+w = [4;5;6] %using ; allows us to make column vectors  
 length(v) %gives the size of the vector   
   
 %% use parenthesis in order to index entries   
@@ -45,14 +45,14 @@ w(idx)
   
 %% max function for vectors  
 max(v)  
-\[largest, idx\] = max(v)  
+[largest, idx] = max(v)  
 ```  
 
 ## Matrices  
 
 ```matlab  
-A = \[1 2 3; 4 5 6;7 8 9\]  
-%A = \[7 2 1; 0 3 -1;-3 4 2\]  
+A = [1 2 3; 4 5 6;7 8 9]  
+%A = [7 2 1; 0 3 -1;-3 4 2]  
   
 ```  
 
@@ -74,9 +74,9 @@ A(4)
 %% max function for matrices  
 %basically treats it as if u put in seperate column vectors   
 max(A) %returns a row with the highest entries of each column   
-max(A,\[\],2) % returns a column with the highest entries of each row   
+max(A,[],2) % returns a column with the highest entries of each row   
 max(A,2) %compares the number 2 with each entry and returns the max of that comparison  
-B = \[1 2 4;4 1 1 ; 10 12 11\]  
+B = [1 2 4;4 1 1 ; 10 12 11]  
 max(A,B) %compares entrywise between two matrices  
 ```  
 
@@ -84,7 +84,7 @@ max(A,B) %compares entrywise between two matrices
 
 ```matlab  
 det(A)  
-inv(A) %will not work for A = \[1:3;4:6;7:9\] since condition number is large  
+inv(A) %will not work for A = [1:3;4:6;7:9] since condition number is large  
 A*inv(A)  
 cond(A)  
 ```  
@@ -92,7 +92,7 @@ cond(A)
 ### Solving $Ax=b$  
 
 ```matlab  
-b = \[1 2 3\]'  
+b = [1 2 3]'  
 x1 = inv(A)*b  
 x2 = A\b  
 ```  
@@ -119,14 +119,14 @@ A caveat, however, is to be aware of the conjugate transpose previously mentione
 ```matlab  
 %% Symbolic math   
 syms a b c  
-v = \[a b c\]  
+v = [a b c]  
 v*v'  
 v' %gives column vector of cojugates  
 v*v.'  
   
 %alternate  
 syms a b c real  
-w = \[a b c\]  
+w = [a b c]  
 w'  
 
 det(v.'*v) %determinant of any outer product is zero
@@ -138,10 +138,10 @@ det([a b c;d e f;g h i]) %3x3 determinant formula
 
 ```matlab  
 %% shortcuts  
-v = \[1:3\]  
-A = \[1:3;4:6;7:9\]  
-v = \[1:2:10\] %odd numbers from 1 to 10  
-v = \[10:-2:1\] %deceding even numbers from 10 to 1  
+v = [1:3]  
+A = [1:3;4:6;7:9]  
+v = [1:2:10] %odd numbers from 1 to 10  
+v = [10:-2:1] %deceding even numbers from 10 to 1  
   
 ```  
 
@@ -156,10 +156,10 @@ v = linspace(0,1,10)
 
 ```matlab  
 %% concatenate matrices and vectors  
-v = \[1:3\]  
-w = \[4:6\]  
-y = \[v;w\] %stacks vectors on top   
-z = \[v w\] %concatenates from the right   
+v = [1:3]  
+w = [4:6]  
+y = [v;w] %stacks vectors on top   
+z = [v w] %concatenates from the right   
   
 ```  
 
@@ -205,7 +205,7 @@ sprintf('sum of first %.f integers is %.f',x,sum1)
 
 sum3 = 0 ;
 
-A = \[1:3;4:6;7:9\]; %never really do this but this is what happens if you do 
+A = [1:3;4:6;7:9]; %never really do this but this is what happens if you do 
 
 for i = A
 
@@ -310,7 +310,7 @@ Temp = data{:,'Temp'};
   
 %you can also pull multiple columns with either numbers or via variable id  
 %We shall grab everything with numbers   
-storestuff = data(:,\[1 3 4 10 11\]);  
+storestuff = data(:,[1 3 4 10 11]);  
   
 %you can also pull the values of a variable with dot notation  
 data.Temp  
@@ -353,7 +353,7 @@ whos c column1
 storestuff.CPI = str2double(storestuff.CPI);  
 storestuff.Unemployment = str2double(storestuff.Unemployment);  
 mean_storestuff = grpstats(storestuff,'Store',@mean); %applies the mean fucntion to everything in the data frame grouped by 'Store'  
-mean_storestuff.GroupCount = \[\]; % to remove a column we dont want  
+mean_storestuff.GroupCount = []; % to remove a column we dont want  
   
 ```  
 
@@ -371,7 +371,7 @@ holidays = data(:,{'Store','IsHoliday'});
 holidays.IsHoliday = categorical(holidays.IsHoliday); %change to categorical  
 holidays.IsHoliday = holidays.IsHoliday == 'TRUE'; %change to 0/1  
 sum_holidays = grpstats(holidays,'Store',@sum);  
-sum_holidays.GroupCount = \[\];  
+sum_holidays.GroupCount = [];  
 ```  
 
 ### Joining  
