@@ -107,7 +107,8 @@ A.' % will not conjugate entries
   
 ```  
 ### Matrix Multiplication
-```
+
+```matlab
 A*B %Will do the matrix mulitplication as we have shown above from A*inv(A)
 A.*B %Will do an entrywise mutliplication instead of matrix multiplication
 ```
